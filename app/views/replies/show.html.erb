@@ -1,24 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Reply -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Reply %></h1>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @reply.user %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:value) %></dt>
+      <dd><pre class="prettyprint"><%= @reply.value %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Question:</strong>
-  <%= @reply.question %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              replies_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_reply_path(@reply), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              reply_path(@reply),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Answer:</strong>
-  <%= @reply.answer %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @reply.value %>
-</p>
-
-<%= link_to 'Edit', edit_reply_path(@reply) %> |
-<%= link_to 'Back', replies_path %>
