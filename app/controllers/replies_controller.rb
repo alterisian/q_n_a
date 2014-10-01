@@ -29,6 +29,7 @@ class RepliesController < ApplicationController
   # POST /replies.json
   def create
     @reply = Reply.new(reply_params)
+    @reply.user = current_user
 
     respond_to do |format|
       if @reply.save
